@@ -50,21 +50,18 @@
   )
 }
 
-= 3118A RECF Achieve 2026-2027 Engineering & Design Notebook <intro-overview>
-
-\
-
-The 2026-2027 RECF Achieve season uses *Pinnacle*. We are keeping this notebook as a running record of what we noticed, what we tried, what failed, and what we changed next.
+#align(center)[
+  #text(size: 15pt, weight: "bold")[
+  = 3118A Astrobots
+  = RECF Achieve 2026-2027 Engineering & Design Notebook <intro-overview>
+  ]
+]
 
 \
 
 #align(center)[
   #image("../images/team_logo.png", width: 60%)
 ]
-
-\
-
-We are starting with the objects and the rules before fixing the robot layout. The first robot needs clean handling, short cycles, controlled roller work, and a driver who can protect a stack while finding the next scoring chance.
 
 #pagebreak()
 
@@ -77,7 +74,7 @@ We are starting with the objects and the rules before fixing the robot layout. T
   "Fabrication, Build",
   "don-dao.png",
   [
-    I joined FRC team 118 and V5RC team 3118A during my freshman year. Before that, I had worked on competitive programming, web development, and game projects. Robotics introduced me to control theory and pushed me toward mechanical design. This season I am taking the design lead, and I want to become more comfortable designing and building complete subsystems.
+    I joined FRC team 118 and V5RC team 3118A during my freshman year after working on competitive programming, web development, and game projects. Robotics introduced me to control theory and pushed me toward mechanical design, so this season I am taking the design lead and trying to become more comfortable designing and building complete subsystems.
   ],
 )
 
@@ -88,7 +85,7 @@ We are starting with the objects and the rules before fixing the robot layout. T
   none,
   "jabe-alison.png",
   [
-    I started robotics in fourth grade with VEX IQ Squared Away. In middle school, I worked with BEST Robotics as a programmer, electronics lead, safety officer, and spotter. Our team won the BEST award in 2022-2023. I joined 3118A in ninth grade and also programmed for FRC team 118.
+    I started robotics in fourth grade with VEX IQ Squared Away, then worked with BEST Robotics in middle school as a programmer, electronics lead, safety officer, and spotter. Our team won the BEST award in 2022-2023. I joined 3118A in ninth grade and later programmed for FRC team 118.
   ],
 )
 
@@ -99,7 +96,7 @@ We are starting with the objects and the rules before fixing the robot layout. T
   "Fabrication, Build",
   "zaid-asad.png",
   [
-    I started with VEX IQ Squared Away in fifth grade. I moved into VRC for Tipping Point, then reached VEX Worlds in Spin Up. I continued through Over Under and High Stakes, working as a designer, builder, notebooker, and programmer. I also program in Codeforces and on personal projects. This year I want to document our work better while sharpening my programming.
+    I started with VEX IQ Squared Away in fifth grade, moved into VRC for Tipping Point, and reached VEX Worlds in Spin Up. I continued through Over Under and High Stakes while working as a designer, builder, notebooker, and programmer. I also program in Codeforces and on personal projects, and this year I want to document our work better while sharpening my programming.
   ],
 )
 
@@ -119,7 +116,7 @@ We are starting with the objects and the rules before fixing the robot layout. T
   "Design",
   "jeremiah-george.png",
   [
-    I spent two years in VEX IQ and three years in BEST Robotics. In high school, I added VEX V5 and FRC. When BEST stopped at my school, I continued with VEX V5 and FRC. I have worked as a designer, builder, and driver, and I am continuing those roles this season.
+    I spent two years in VEX IQ and three years in BEST Robotics before adding VEX V5 and FRC in high school. When BEST stopped at my school, I continued with VEX V5 and FRC, where I have worked as a designer, builder, and driver. I am continuing those roles this season.
   ],
 )
 
@@ -145,13 +142,13 @@ We are starting with the objects and the rules before fixing the robot layout. T
   )
 ]
 
-Engineering means designing something until it produces the result we need. That does not happen in one step. We research, plan, build, and test the robot, then repeat the same work on each mechanism, program, and strategy choice.
+Engineering means designing something until it produces the result we need, but that result does not appear in one step. We research, plan, build, and test the robot, then repeat the same work on each mechanism, program, and strategy choice.
 
-We use the Engineering Design Process to keep that work organized. It breaks a large problem into smaller decisions, then sends us back when a test exposes a weak point. Architects, computer scientists, automotive engineers, and scientists use similar cycles.
+We use the Engineering Design Process to keep that work organized. It breaks a large problem into smaller decisions, and when a test exposes a weak point, it sends us back to the step that needs more work. Architects, computer scientists, automotive engineers, and scientists use similar cycles.
 
-For RECF Achieve, this process keeps our robot tied to the actual requirements of Pinnacle. We identify the problem, research it, sketch options, select one, build it, and test it. Each pass improves one part of the robot instead of asking us to guess the whole design at once.
+For RECF Achieve, this process keeps our robot tied to the actual requirements of Pinnacle. We identify the problem, research it, sketch options, select one, build it, and test it, so each pass improves one part of the robot instead of asking us to guess the whole design at once.
 
-We will mark each step in this notebook. The pages will show what we tested, what evidence we collected, and what changed afterward. A selected design is not final. If it fails on the field, we go back and change the part that caused the problem.
+We will mark each step in this notebook and record the evidence that moved the design forward. A selected design is not final. If it fails on the field, we go back to the part that caused the problem and change it.
 
 \
 
@@ -178,14 +175,12 @@ Our drivetrain matrix is one example. It compares tank, treaded, and holonomic l
 \
 
 #edp-header("BUILD", "Design & Build the Solution")
-== Design & Build the Solution <bu-edp-build>
 
 The fourth step turns the selected idea into hardware. We model the geometry, choose materials, assemble the parts, write the first code, and check the robot against the rules. Physical measurements matter. A small clearance change can decide whether a pin or cup enters cleanly.
 
 \
 
 #edp-header("TEST", "Test, Evaluate & Repeat")
-== Test, Evaluate & Repeat <ts-edp-test>
 
 The fifth step is testing the design against the criteria we wrote earlier. We record cycle times, misses, alignment error, motor behavior, driver workload, and rule concerns. A failed test still helps if it tells us exactly what to change next.
 

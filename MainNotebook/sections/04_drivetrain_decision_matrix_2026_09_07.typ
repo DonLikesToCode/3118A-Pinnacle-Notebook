@@ -21,14 +21,14 @@
 #v(6pt)
 #edp-header("SELECT", "Choosing a Drivetrain for Pinnacle")
 
-The drivetrain must cross a 12' x 12' field with legal objects, line up at goals and loaders, and handle contact near the neutral zones. We compared six options using four game demands: ease of programming, mechanical simplicity, drivetrain torque, and maneuverability.
+The drivetrain must cross a 12' x 12' field with legal objects, line up at goals and loaders, and handle contact near the neutral zones, so we compared six options using four game demands: ease of programming, mechanical simplicity, drivetrain torque, and maneuverability.
 
 \
 
 #block(breakable: false)[
   == Weighted Decision Matrix
 
-  We score each option from 1 to 5, with 5 as the best fit. Each score is multiplied by its weight before the row total is calculated.
+  We score each option from 1 to 5, with 5 as the best fit, then multiply each score by its weight before calculating the row total.
 
   #table(
     columns: (2fr, 0.8fr, 0.8fr, 0.8fr, 0.8fr, 1.1fr),
@@ -58,16 +58,16 @@ The drivetrain must cross a 12' x 12' field with legal objects, line up at goals
 
 == Criteria Definitions & Weight Justification
 
-- *Ease of Programming (Weight #ease-weight):* The robot needs accurate approaches to goals, loaders, and rollers. A simpler drive model means fewer motion behaviors to tune and easier autonomous recovery.
-- *Mechanical Simplicity (Weight #simplicity-weight):* Fewer specialized modules mean fewer alignment points and fewer parts to replace. That leaves more build time for the scoring mechanism.
-- *Drivetrain Torque (Weight #torque-weight):* The robot may carry a pin, cup, and stack while pushing through traffic or contacting a field element. Loaded driving needs low-speed force more than top speed.
-- *Maneuverability (Weight #maneuverability-weight):* Holonomic movement can strafe and rotate without turning the chassis. The gain must still justify the added controls and hardware.
+- *Ease of Programming (Weight #ease-weight):* The robot needs accurate approaches to goals, loaders, and rollers, so a simpler drive model gives us fewer motion behaviors to tune and easier autonomous recovery.
+- *Mechanical Simplicity (Weight #simplicity-weight):* Fewer specialized modules mean fewer alignment points and fewer parts to replace, leaving more build time for the scoring mechanism.
+- *Drivetrain Torque (Weight #torque-weight):* The robot may carry a pin, cup, and stack while pushing through traffic or contacting a field element, so loaded driving needs low-speed force more than top speed.
+- *Maneuverability (Weight #maneuverability-weight):* Holonomic movement can strafe and rotate without turning the chassis, but the gain must still justify the added controls and hardware.
 
 \
 
 == Decision
 
-Tank Drive earns the highest weighted score. It gives us the simplest code, the fewest mechanical parts, and useful torque for loaded cycles. Turning is slower than with a holonomic drive, so the driver will need planned turns and practice. Tank Drive with Treads is the closest alternative, but tread drag may slow repeated goal and loader routes. Holonomic drives help with sideways alignment, but their extra hardware and calibration reduce our torque margin.
+Tank Drive earns the highest weighted score because it gives us the simplest code, the fewest mechanical parts, and useful torque for loaded cycles + defensive capabilities. Turning is slower than with a holonomic drive, so the driver will need planned turns and practice. Tank Drive with Treads is the closest alternative, but tread drag may slow repeated goal and loader routes. Holonomic drives help with sideways alignment, but their extra hardware and calibration reduce our torque margin.
 
 \
 

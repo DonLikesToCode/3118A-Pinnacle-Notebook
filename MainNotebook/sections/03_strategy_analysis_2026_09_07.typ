@@ -8,9 +8,21 @@
 #v(6pt)
 #edp-header("IDENTIFY", "Pinnacle Strategy Analysis: Cycle Time First")
 
+#block(breakable: false)[
+  == Early Strategy Questions
+
+  1. Can the first robot version score a stable short stack on an alliance goal before attempting the center goal?
+  2. How many seconds does a complete loader-to-goal cycle take with one driver and one loader operator?
+  3. Is roller control worth a dedicated mechanism, or can the scoring tool reach the roller without slowing object cycles?
+  4. Can the autonomous routine earn the 15-second ranking point without entering a contested lane?
+  5. When does a neutral-goal descore gain more points than a new stack, after drive time and risk are counted?
+
+  These questions become testable notebook entries. We will replace estimates with measured cycle times, object counts, route diagrams, and match observations.
+]
+
 == Game Challenge Question
 
-What gives us a dependable Pinnacle score when every object must be collected, aligned, nested, and delivered before the next cycle? Our first plan is to shorten the loader-to-goal cycle. One tall stack is not worth much if the robot spends the rest of the match returning to the loader.
+What gives us a dependable Pinnacle score when every object must be collected, aligned, nested, and delivered before the next cycle? Our first plan is to shorten the loader-to-goal cycle, because one tall stack is not worth much if the robot spends the rest of the match returning to the loader.
 
 The strategy has to answer four connected questions:
 
@@ -25,7 +37,7 @@ For early testing, we will treat a cycle as:
 
 `loader handoff -> intake -> drive to scoring location -> align -> score -> leave the goal -> return`
 
-Intake speed is only one part of the measurement. We need the time from loader release to the next legal loader approach. A slower intake may still be better if it jams less and lets the driver leave the goal cleanly.
+Intake speed is only one part of the measurement. We need the time from loader release to the next legal loader approach, and a slower intake may still be better if it jams less and lets the driver leave the goal cleanly.
 
 == Strategy Priorities
 
@@ -34,26 +46,22 @@ Intake speed is only one part of the measurement. We need the time from loader r
 3. *Simple goal selection:* Alliance goals give predictable color points. Neutral goals bring traffic, and the center goal pays more but needs extra lift and space.
 4. *Roller decisions with a time budget:* Change a roller only when the added yellow-object value beats the time and route risk.
 5. *Planned endgame transition:* The final route needs time for the 21-point loader park and Alliance ranking-point conditions.
-
+#pagebreak()
 == Match-Type Strategy
 
 === Solo Driving/Coding Matches
 
-RECF uses two individual-robot formats: Solo Driving Matches and Solo Coding Matches. The first uses a driver. The second runs student-written code without controller input. Both let us measure cycles without a partner changing the route.
-#pagebreak()
-For Solo Driving, we need one clean repeated cycle first. We will start at the preload, score a reliable goal, return to a loader, and repeat without a risky center shortcut. Once that route works, we can add roller control or a taller goal if the extra points do not cut the cycle count.
-
-For Solo Coding, the route should be shorter and easier to recover. The robot needs checks for the loader, goal approach, and object release. Fewer completed cycles are acceptable if the routine finishes every run.
+RECF uses two individual-robot formats: Solo Driving Matches and Solo Coding Matches. The first uses a driver, while the second runs student-written code without controller input, so both let us measure cycles without a partner changing the route. For Solo Driving, we need one clean repeated cycle first. We will start at the preload, score a reliable goal, return to a loader, and repeat without a risky center shortcut; once that route works, we can add roller control or a taller goal if the extra points do not cut the cycle count. For Solo Coding, the route should be shorter and easier to recover because the robot needs checks for the loader, goal approach, and object release without a driver correcting each mistake. Fewer completed cycles are acceptable if the routine finishes every run.
 
 === Alliance Matches
 
-Alliance matches add a 15-second autonomous period and a second robot per alliance. We should not duplicate the partner's job. If the partner builds at the center goal, our robot can run alliance or neutral cycles, control rollers, or prepare the loader park. We need this plan before the match so both robots do not block the same lane.
+Alliance matches add a 15-second autonomous period and a second robot per alliance, so we should not duplicate the partner's job. If the partner builds at the center goal, our robot can run alliance or neutral cycles, control rollers, or prepare the loader park. We need this plan before the match so both robots do not block the same lane.
 
 The autonomous plan should target the ranking point without entering the opponent's side of the neutral zone. After autonomous, the driver should use the route with the best measured points per second, not the route that only looked good on paper.
 
 == Solo Match Strategy
 
-Solo match testing is its own repeatability problem, not a shortened Alliance match. We will record the best score, average score, failed cycles, and recovery time after a miss.
+Solo match testing is its own repeatability problem, not a shortened Alliance match. We will record the best score, average score, failed cycles, and recovery time after a miss so a single lucky run does not hide an unreliable route.
 
 The initial Solo route should:
 
@@ -80,11 +88,5 @@ The initial Solo route should:
 4. Compare a short alliance-goal route against a longer center-goal route using completed score per 60 seconds.
 5. Run three Solo Driving attempts and three Solo Coding attempts, recording recovery time instead of only final score.
 
-The first strategy decision is not “score the highest object.” It is “build the repeatable loop, then add complexity only when the measured return is worth the lost time.”
-
 #v(12pt)
 #line(length: 100%, stroke: 0.5pt + rgb("#334155"))
-#v(4pt)
-#text(size: 9pt, fill: rgb("#94A3B8"))[
-  *Reference structure:* 3118B Push Back Notebook: Strategy Analysis
-]

@@ -51,7 +51,7 @@
 #v(6pt)
 #edp-header("IDENTIFY", "Pinnacle: Field Layout, Objects, and Rule Boundaries")
 
-The v1.2 manual sets Pinnacle on a 12' x 12' field. Robots collect cups and pins, stack them on goals, and turn rollers to change some object values. Scoring is only part of the problem. The robot also has to cross five zones, keep its payload legal, and save time for parking.
+The v1.2 manual sets Pinnacle on a 12' x 12' field where robots collect cups and pins, stack them on goals, and turn rollers to change some object values. Scoring is only part of the problem. The robot also has to cross five zones, keep its payload legal, and save time for parking.
 
 #figure(
   rounded-image(image-dir + "field-layout.png"),
@@ -72,8 +72,8 @@ The v1.2 manual sets Pinnacle on a 12' x 12' field. Robots collect cups and pins
 - *Rollers:* Four perimeter structures that show red, blue, or yellow toward the field.
 - *Tape lines:* The manual places each tape line fully on the tile closer to the center of the field.
 
-The field has long alliance areas and three neutral sections. Alliance goals give us the most predictable color routes. Neutral goals invite traffic, while the center goal pays more but takes longer to reach and score.
-
+The field has long alliance areas and three neutral sections, so our route changes depending on where the next object sits. Alliance goals give us the most predictable color routes. Neutral goals invite traffic, while the center goal pays more but takes longer to reach and score.
+#pagebreak()
 == Object Supply & Starting Locations
 
 #table(
@@ -93,7 +93,7 @@ The field has long alliance areas and three neutral sections. Alliance goals giv
   [Rollers], [4], [Two in each alliance zone; roller color controls yellow-object value],
 )
 
-#text(size: 8pt, fill: rgb("#94A3B8"))[*Note:* the goal count above names the physical goal structures used for scoring: two red, two blue, two neutral, and one center goal, for seven total structures. The manual's object diagrams and zone figures should be used when checking field setup.]
+#text(size: 8pt, fill: rgb("#94A3B8"))[*Note:* the goal count above names the physical scoring structures: two red, two blue, two neutral, and one center goal, for seven total. Use the manual's object diagrams and zone figures when checking field setup.]
 
 == Game Element Dimensions & Handling Notes
 
@@ -117,25 +117,30 @@ The field has long alliance areas and three neutral sections. Alliance goals giv
 ) <fig-pin-dimensions>
 
 #figure(
-  rounded-image(image-dir + "cup-dimensions.png", width: 50%),
+  rounded-image(image-dir + "cup-dimensions.png", width: 35%),
   caption: [
     Cup diagram: each two-segment cup is roughly 6.48" by 3.16" and has one transparent half and one opaque half.
   ],
 ) <fig-cup-dimensions>
 
+
 #figure(
-  rounded-image(image-dir + "loader-dimensions.png", width: 50%),
+  rounded-image(image-dir + "loader-dimensions.png", width: 35%),
   caption: [
     Loader diagram: each perimeter loader is roughly 6.5" long by 3.02" wide and can display red, blue, or yellow toward the field. Only one cup, pin, or pinnacle may be in a loader at a time, and the drive team member must release the object before the robot touches it.
   ],
 ) <fig-loader-dimensions>
 
 #figure(
-  rounded-image(image-dir + "roller-dimensions.png", width: 90%),
+  rounded-image(image-dir + "roller-dimensions.png", width: 80%),
   caption: [
     Roller diagram: each perimeter roller is roughly 6.5" long by 3.02" wide and can display red, blue, or yellow toward the field.
   ],
 ) <fig-roller-dimensions>
+#text(size: 9pt, fill: rgb("#94A3B8"))[
+  *Source:* RECF Achieve: Pinnacle Game Manual v1.2, released August 18, 2026 \
+  *Manual URL:* https://games.recf.org/achieve/1.2
+]
 
 #pagebreak()
 
@@ -143,27 +148,27 @@ The field has long alliance areas and three neutral sections. Alliance goals giv
 
 \
 
-*Goal:* A field-mounted structure that accepts pins, cups, and stacks. Alliance goals are about 3.25\" high, neutral goals are about 5.77\" high, and the center goal is about 8.77\" high. The heights change the approach. Alliance goals need less lift, while neutral and center goals need more travel and better stability. The opening can also act as a physical guide, so a compliant aligner may work better than driver sight alone.
+*Goal:* A field-mounted structure that accepts pins, cups, and stacks. Alliance goals are about 3.25\" high, neutral goals are about 5.77\" high, and the center goal is about 8.77\" high. The heights change the approach, with alliance goals needing less lift while neutral and center goals need more travel and better stability. The opening can also guide the robot, so a compliant aligner may work better than driver sight alone.
 
 \
 
-*Pin:* A two-segment object with a concave and convex side. A pin is named by its two colors, and either halfpin can be visible or hidden after nesting. The curved sides help the pin settle into a cup or goal. In our hands-on testing, pins and cups self-aligned instead of needing perfect starting alignment. We measured about 3/4" of lateral offset before the pieces stopped settling cleanly. That helps the driver, but it does not fix a crooked lift or loose guide.
+*Pin:* A two-segment object with a concave and convex side. A pin is named by its two colors, and either halfpin can be visible or hidden after nesting. The curved sides help the pin settle into a cup or goal, and in our hands-on testing, pins and cups self-aligned instead of needing perfect starting alignment. We measured about 3/4" of lateral offset before the pieces stopped settling cleanly. That helps the driver, but it does not fix a crooked lift or loose guide.
 
 \
 
-*Cup:* A two-segment object with one transparent half and one opaque half. A cup nests onto a scored pin and is worth one point when scored. The transparent half can leave a pin color visible, while the opaque half can hide it. The cup works like a funnel during nesting, which helps with small approach errors. It can also rotate if the intake releases it off-center.
+*Cup:* A two-segment object with one transparent half and one opaque half. A cup nests onto a scored pin and is worth one point when scored. The transparent half can leave a pin color visible while the opaque half hides it, and the cup works like a funnel during nesting, which helps with small approach errors. It can also rotate if the intake releases it off-center.
 
 \
 
-*Pinnacle:* A pin nested into a cup. The manual treats this two-object stack as a separate loadable game element. It arrives partly assembled, so the intake needs enough clearance to accept it without crushing the cup or pulling the pin out during acceleration.
+*Pinnacle:* A pin nested into a cup. The manual treats this two-object stack as a separate loadable game element. It arrives partly assembled, so the intake needs enough clearance to accept it without crushing the cup or pulling the pin out when the robot accelerates.
 
 \
 
-*Loader:* A perimeter structure that brings team-loaded cups, pins, and pinnacles from the driver-box supply onto the field. Only one object can be in a loader at a time, and the drive team member must release it before the robot touches it. This is a human-to-robot handoff. The robot needs a clear approach, a repeatable intake height, and enough compliance for an off-center object. If the driver has to ram the wall, the next cycle will be harder to repeat.
+*Loader:* A perimeter structure that brings team-loaded cups, pins, and pinnacles from the driver-box supply onto the field. Only one object can be in a loader at a time, and the drive team member must release it before the robot touches it. This is a human-to-robot handoff, so the robot needs a clear approach, a repeatable intake height, and enough compliance for an off-center object. If the driver has to ram the wall, the next cycle will be harder to repeat.
 
 \
 
-*Roller:* A perimeter mechanism that displays red, blue, or yellow. Its state changes yellow halfpin value and can decide which alliance receives neutral-goal cups and yellow halfpins. We could turn the roller easily from the bottom during testing. The robot could also roll it passively from the top with a drive-over contact. The bottom approach looks easier to control. The top approach may be faster if the chassis stays stable.
+*Roller:* A perimeter mechanism that displays red, blue, or yellow. Its state changes yellow halfpin value and can decide which alliance receives neutral-goal cups and yellow halfpins. We could turn the roller easily from the bottom during testing, while the robot could also roll it passively from the top with a drive-over contact. The bottom approach looks easier to control. The top approach may be faster if the chassis stays stable.
 
 #pagebreak()
 
@@ -269,16 +274,4 @@ Pins count only when nested in a goal or a scored cup. Cups count only when nest
 #text(size: 9pt, fill: rgb("#94A3B8"))[
   *Source:* RECF Achieve: Pinnacle Game Manual v1.2, released August 18, 2026 \
   *Manual URL:* https://games.recf.org/achieve/1.2
-]
-
-#block(breakable: false)[
-  == Early Strategy Questions
-
-  1. Can the first robot version score a stable short stack on an alliance goal before attempting the center goal?
-  2. How many seconds does a complete loader-to-goal cycle take with one driver and one loader operator?
-  3. Is roller control worth a dedicated mechanism, or can the scoring tool reach the roller without slowing object cycles?
-  4. Can the autonomous routine earn the 15-second ranking point without entering a contested lane?
-  5. When does a neutral-goal descore gain more points than a new stack, after drive time and risk are counted?
-
-  These questions become testable notebook entries. We will replace estimates with measured cycle times, object counts, route diagrams, and match observations.
 ]
