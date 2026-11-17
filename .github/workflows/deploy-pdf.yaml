@@ -27,6 +27,7 @@ jobs:
         run: |
           mkdir -p public
           typst compile MainNotebook/main.typ public/3118A-Pinnacle-NB.pdf
+          echo '<meta http-equiv="refresh" content="0; url=3118A-Pinnacle-NB.pdf">' > public/index.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
