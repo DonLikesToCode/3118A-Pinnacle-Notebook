@@ -22,7 +22,7 @@
 
 == Game Challenge Question
 
-What gives us a dependable Pinnacle score when every object must be collected, aligned, nested, and delivered before the next cycle? Our first plan is to shorten the loader-to-goal cycle, because one tall stack is not worth much if the robot spends the rest of the match returning to the loader.
+What gives us a dependable Pinnacle score when every object has to be collected, aligned, nested, and delivered before the next cycle? Our first guess is to shorten the loader-to-goal cycle. One tall stack will not help much if the robot spends the rest of the match driving back to the loader.
 
 The strategy has to answer four connected questions:
 
@@ -33,35 +33,35 @@ The strategy has to answer four connected questions:
 
 == Working Scoring Model
 
-For early testing, we will treat a cycle as:
+For the first tests, we will call a cycle:
 
 `loader handoff -> intake -> drive to scoring location -> align -> score -> leave the goal -> return`
 
-Intake speed is only one part of the measurement. We need the time from loader release to the next legal loader approach, and a slower intake may still be better if it jams less and lets the driver leave the goal cleanly.
+Intake speed is only one part of it. We need the time from loader release until the next legal loader approach. A slower intake might still win if it jams less and lets the driver leave the goal without fighting the mechanism.
 
 == Strategy Priorities
 
-1. *Repeatable loader cycles:* Every team-loaded cycle starts with the handoff. The robot should accept one object without a second touch or a hard hit on the perimeter.
-2. *Fast, forgiving scoring alignment:* We saw about 3/4" of lateral tolerance when stacking pins and cups. The mechanism should use that margin, not rely on it to hide poor alignment.
-3. *Simple goal selection:* Alliance goals give predictable color points. Neutral goals bring traffic, and the center goal pays more but needs extra lift and space.
-4. *Roller decisions with a time budget:* Change a roller only when the added yellow-object value beats the time and route risk.
-5. *Planned endgame transition:* The final route needs time for the 21-point loader park and Alliance ranking-point conditions.
+1. *Repeatable loader cycles:* Every team-loaded cycle starts with the handoff. The robot needs to accept one object without a second touch or a hard hit on the perimeter.
+2. *Forgiving scoring alignment:* We saw about 3/4" of lateral tolerance when stacking pins and cups. We want the mechanism to use that margin, not depend on it to cover a crooked approach.
+3. *Simple goal selection:* Alliance goals give predictable color points. Neutral goals bring traffic, while the center goal pays more and takes more lift and space.
+4. *A time limit on roller work:* We should only turn a roller when the added yellow-object value beats the time and route risk.
+5. *An early endgame decision:* The final route needs room for the 21-point loader park and the Alliance ranking-point conditions.
 #pagebreak()
 == Match-Type Strategy
 
 === Solo Driving/Coding Matches
 
-RECF uses two individual-robot formats: Solo Driving Matches and Solo Coding Matches. The first uses a driver, while the second runs student-written code without controller input, so both let us measure cycles without a partner changing the route. For Solo Driving, we need one clean repeated cycle first. We will start at the preload, score a reliable goal, return to a loader, and repeat without a risky center shortcut; once that route works, we can add roller control or a taller goal if the extra points do not cut the cycle count. For Solo Coding, the route should be shorter and easier to recover because the robot needs checks for the loader, goal approach, and object release without a driver correcting each mistake. Fewer completed cycles are acceptable if the routine finishes every run.
+RECF uses two individual-robot formats: Solo Driving Matches and Solo Coding Matches. Solo Driving uses a driver, while Solo Coding runs student-written code without controller input. That gives us two ways to measure cycles without a partner changing the route. For Solo Driving, we need one clean repeated cycle first. We will start at the preload, score a nearby goal, return to a loader, and repeat before trying a center shortcut. If that route works, we can test roller control or a taller goal. Solo Coding will need a shorter route with recovery checks for the loader, goal approach, and object release. A lower score is acceptable if the routine finishes every run.
 
 === Alliance Matches
 
-Alliance matches add a 15-second autonomous period and a second robot per alliance, so we should not duplicate the partner's job. If the partner builds at the center goal, our robot can run alliance or neutral cycles, control rollers, or prepare the loader park. We need this plan before the match so both robots do not block the same lane.
+Alliance matches add a 15-second autonomous period and a second robot per alliance, so we should not duplicate the partner's job. If the partner works at the center goal, our robot can run alliance or neutral cycles, control rollers, or prepare the loader park. We need to decide this before the match so both robots do not enter the same lane.
 
-The autonomous plan should target the ranking point without entering the opponent's side of the neutral zone. After autonomous, the driver should use the route with the best measured points per second, not the route that only looked good on paper.
+The autonomous plan should target the ranking point without entering the opponent's side of the neutral zone. After autonomous, the driver should use the route with the best measured points per second. The route that looked best on paper does not get a free pass.
 
 == Solo Match Strategy
 
-Solo match testing is its own repeatability problem, not a shortened Alliance match. We will record the best score, average score, failed cycles, and recovery time after a miss so a single lucky run does not hide an unreliable route.
+Solo match testing is its own repeatability problem, not a shortened Alliance match. We will record the best score, average score, failed cycles, and recovery time after a miss. One lucky run should not hide an unreliable route.
 
 The initial Solo route should:
 

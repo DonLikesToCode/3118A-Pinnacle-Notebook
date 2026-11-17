@@ -53,7 +53,7 @@
 #align(center)[
   #text(size: 15pt, weight: "bold")[
   = 3118A Astrobots
-  = RECF Achieve 2026-2027 Engineering & Design Notebook <intro-overview>
+  = RECF Achieve 2026-2027 Engineering & Design Notebook <id-intro-overview>
   ]
 ]
 
@@ -81,7 +81,7 @@
 #profile(
   "Jabe Alison",
   "11th",
-  "Main Driver, Strategy",
+  "Skills Driver, Strategy",
   none,
   "jabe-alison.png",
   [
@@ -103,10 +103,12 @@
 #profile(
   "Alex Graun",
   "12th",
-  "Fabrication & Build Lead, Design",
+  "Match Driver, Fabrication & Build Lead, Design",
   none,
   "alex-graun.png",
-  [],
+  [
+    I began doing robotics in elementary school and later moved on to joining team 118 in high school. I have been mostly a builder and driver amongst other roles. I hope to continue to improve my skills in these areas and help the team succeed in Pinnacle.
+  ],
 )
 
 #profile(
@@ -122,53 +124,51 @@
 
 #pagebreak()
 
-= Engineering Design Process <intro-edp>
+= Notebook Format & Reading Guide  (PREFACE) <id-notebook-format>
+
+#include "01_notebook_format_2026_09_06.typ"
+
+#pagebreak()
+
+= Engineering Design Process <id-intro-edp>
 
 #align(center)[
   #box(
-    width: 2.1in,
-    height: 2.1in,
+    width: 40%,
+    height: 2.4in,
     radius: 100%,
     clip: true,
-    stroke: 1pt + rgb("#475569"),
-    fill: rgb("#151724"),
-    align(center + horizon)[
-      #text(size: 8pt, fill: rgb("#94A3B8"))[
-        Circular EDP image placeholder \
-        Insert PNG here: \
-        images/engineering-design-process.png
-      ]
-    ],
+    image("../images/engineering-design-process.jpg", width: 100%, height: 100%, fit: "cover"),
   )
 ]
 
-Engineering means designing something until it produces the result we need, but that result does not appear in one step. We research, plan, build, and test the robot, then repeat the same work on each mechanism, program, and strategy choice.
+Engineering is the process of getting a robot to do the job we need. It never works in one step. We research, sketch, build, and test, then go back when a mechanism or program does not behave the way we expected.
 
-We use the Engineering Design Process to keep that work organized. It breaks a large problem into smaller decisions, and when a test exposes a weak point, it sends us back to the step that needs more work. Architects, computer scientists, automotive engineers, and scientists use similar cycles.
+We use the Engineering Design Process to keep those changes from turning into guesses. It breaks a large problem into smaller decisions, then gives us a place to record what failed and what we changed. Other kinds of engineers use the same basic loop.
 
-For RECF Achieve, this process keeps our robot tied to the actual requirements of Pinnacle. We identify the problem, research it, sketch options, select one, build it, and test it, so each pass improves one part of the robot instead of asking us to guess the whole design at once.
+For RECF Achieve, the process keeps our robot tied to the actual requirements of Pinnacle. We identify the problem, look at the rules, sketch options, select one, build it, and test it. We do not need to guess the whole robot at once.
 
-We will mark each step in this notebook and record the evidence that moved the design forward. A selected design is not final. If it fails on the field, we go back to the part that caused the problem and change it.
+Each page gets the EDP stage that matches the work on it. A selected design is not final. If it fails on the field, we go back to the part that caused the problem and change it.
 
 \
 
 #edp-header("IDENTIFY", "Identify & Research the Problem")
 
-The first step is identifying and researching the problem. We write down the field limits, scoring conditions, robot restrictions, object behavior, and match rules before choosing hardware. We separate manual facts from guesses that still need a test.
+First we figure out what the robot actually has to do. We write down field limits, scoring conditions, robot restrictions, object behavior, and match rules before choosing hardware. Facts from the manual stay separate from guesses that still need a test.
 
-For Pinnacle, we measure the game elements, read the possession and loading rules, map the goals and loaders, and write down how pins, cups, rollers, and stacks behave in our hands.
+For Pinnacle, that means measuring the game elements, reading the possession and loading rules, mapping the goals and loaders, and handling pins, cups, rollers, and stacks ourselves.
 
 \
 
 #edp-header("BRAINSTORM", "Brainstorm Possible Solutions")
 
-The second step is brainstorming solutions that fit the criteria. We use sketches, CAD, quick prototypes, route drawings, and code ideas before committing to one approach. Some ideas will fail early. That is still useful if the test reveals a feature worth keeping.
+Next we put down several solutions before committing to one. We use sketches, CAD, quick prototypes, route drawings, and code ideas. Some of them will fail early. That is fine if the failure tells us what not to build.
 
 #pagebreak()
 
 #edp-header("SELECT", "Select a Promising Solution")
 
-The third step is selecting a promising solution. We compare strengths, weaknesses, risk, cost, cycle time, and reliability, then use a weighted matrix when the choice has several tradeoffs. A bad test result can send us back to this step or to brainstorming.
+Then we choose the option that fits the constraints best. We compare risk, cost, cycle time, reliability, and the work needed to build it, using a weighted matrix when the tradeoff is hard to judge by eye. A bad test can send us back here.
 
 Our drivetrain matrix is one example. It compares tank, treaded, and holonomic layouts against the demands we expect Pinnacle to put on the robot.
 
@@ -176,12 +176,12 @@ Our drivetrain matrix is one example. It compares tank, treaded, and holonomic l
 
 #edp-header("BUILD", "Design & Build the Solution")
 
-The fourth step turns the selected idea into hardware. We model the geometry, choose materials, assemble the parts, write the first code, and check the robot against the rules. Physical measurements matter. A small clearance change can decide whether a pin or cup enters cleanly.
+After that, we turn the idea into hardware. We model the geometry, choose materials, assemble the parts, write the first code, and check the robot against the rules. CAD gives us a starting point, not a guarantee. A small clearance change can decide whether a pin or cup enters cleanly.
 
 \
 
 #edp-header("TEST", "Test, Evaluate & Repeat")
 
-The fifth step is testing the design against the criteria we wrote earlier. We record cycle times, misses, alignment error, motor behavior, driver workload, and rule concerns. A failed test still helps if it tells us exactly what to change next.
+Testing means checking the design against the criteria we wrote earlier. We record cycle times, misses, alignment error, motor behavior, driver workload, and rule concerns. A failed run is still useful when it tells us what to change next.
 
-After testing, we decide whether to keep the design, adjust it, or restart with another idea. We keep the old versions in the notebook. That makes the reason for each change easier to follow.
+After each test, we decide whether to keep the design, adjust it, or restart. Old versions stay in the notebook. They show why the robot changed.

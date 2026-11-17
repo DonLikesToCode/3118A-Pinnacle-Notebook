@@ -11,7 +11,7 @@
 
 #import "_style.typ": edp-colors, color-identify, color-brainstorm, color-select, color-build, color-test, color-repeat, edp-header, sign-page
 
-#let notebook-date = "2026-09-06"
+#let notebook-date = state("notebook-date", none)
 
 // --- PAGE FRAME GATE ----------------------------------------------------------
 // Front matter pages (intro, TOC, indices) show no header/footer. The flag is
@@ -36,18 +36,20 @@
     ]
   },
   footer: context {
-    line(length: 100%, stroke: 0.5pt + rgb("#334155"))
-    v(2pt)
-    grid(
-      columns: (1fr, 1fr),
-      align(left)[#text(size: 9pt, fill: rgb("#94A3B8"))[
-        Date: #notebook-date
-      ]],
-      align(right)[#text(size: 9pt, fill: rgb("#94A3B8"))[
-        Season: Pinnacle (2026-2027)
-        #if numbered.get() [\ Page #counter(page).display("1")]
-      ]]
-    )
+    if numbered.get() [
+      #line(length: 100%, stroke: 0.5pt + rgb("#334155"))
+      #v(2pt)
+      #grid(
+        columns: (1fr, 1fr),
+        align(left)[#text(size: 9pt, fill: rgb("#94A3B8"))[
+          Date: #notebook-date.get()
+        ]],
+        align(right)[#text(size: 9pt, fill: rgb("#94A3B8"))[
+          Season: Pinnacle (2026-2027)
+          \ Page #counter(page).display("1")
+        ]]
+      )
+    ]
   }
 )
 #set text(fill: rgb("#E2E8F0"), font: "Arial", size: 10pt) // guide font "Liberation Sans"; Arial = metric-identical Win-safe fallback
@@ -102,7 +104,7 @@
 // 2) Front-matter indices (still unnumbered)
 #outline(
   title: "Master Table of Contents",
-  target: heading.where(label: <id-game-analysis>),
+  target: heading.where(level: 1),
   indent: 1.5em,
 )
 
@@ -112,14 +114,11 @@
   target: figure.where(kind: image)
 )
 #pagebreak()
-// 2.5) Notebook Format & Reading Guide (front matter explainer, unnumbered:
-// mirrors the "Notebook Format" page both reference notebooks carry up front)
-#include "sections/01_notebook_format_2026_09_06.typ"
-#pagebreak()
 
 // 3) Numbered log pages: frame turns on + counter resets so this next page = 1
 #numbered.update(true)
 #context counter(page).update(1)
+#notebook-date.update("September 9, 2026")
 
 // =============================================================================
 // AUTO-INJECTION ZONE
@@ -127,8 +126,26 @@
 // entry page automatically continues the counter from the previous log.
 // =============================================================================
 
-#include "sections/02_game_analysis_2026_09_06.typ"
+#include "sections/02_game_analysis_2026_09_09.typ"
 #pagebreak()
-#include "sections/03_strategy_analysis_2026_09_07.typ"
+#include "sections/03_strategy_analysis_2026_09_09.typ"
 #pagebreak()
-#include "sections/04_drivetrain_decision_matrix_2026_09_07.typ"
+#include "sections/04a_drivetrain_brainstorm_2026_09_09.typ"
+#pagebreak()
+#include "sections/04_drivetrain_decision_matrix_2026_09_09.typ"
+#pagebreak()
+#notebook-date.update("September 11, 2026")
+#include "sections/05a_lift_brainstorm_2026_09_11.typ"
+#pagebreak()
+#include "sections/05_lift_decision_matrix_2026_09_11.typ"
+#pagebreak()
+#include "sections/06a_end_effector_brainstorm_2026_09_11.typ"
+#pagebreak()
+#include "sections/06_end_effector_decision_matrix_2026_09_11.typ"
+#pagebreak()
+#include "sections/07_ground_intake_analysis_2026_09_11.typ"
+#pagebreak()
+#notebook-date.update("September 13, 2026")
+#include "sections/08_cad_drive_train_log_2026_09_13.typ"
+#pagebreak()
+#include "sections/09_cad_end_effector_log_2026_09_13.typ"

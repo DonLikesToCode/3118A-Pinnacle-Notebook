@@ -1,0 +1,13 @@
+*ISOMETRIC VIEW*
+The end effector is a dual roller system that is able to nest the pins properly.
+The rollers are a hybrid mix of flex wheels and rubber band rollers. 
+We've found that this set up in the past has a natural funneling effect on most plastic based game elements.
+
+*TOP VIEW*
+This end effector alone is powered by one 5.5W motor and will be also placed on a wrist that is also 5.5W.
+The rollers spin reverse of each other in order to intake a full pinnacle smoothly.
+
+
+*TOP VIEW OF POLYCARBONATE*
+We decided to use custom polycarbonate to hardstop the pinnacle when full nestled into the rollers.
+The diameter of the hole in the center of the plate is what lets us control how deep the pinnacle can be nested in between the two rollers.

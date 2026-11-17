@@ -1,0 +1,23 @@
+DRIVETRAIN DESIGN
+
+We decided to limit the chassis to only using 44W worth of motors.
+Given the 99W limit, we saw that giving ourselves 55W to hand over to subsystems would be extremely beneficial.
+It's also important to mention that in past games, 66W drives were almost mandatory to be competitive.
+However, we believe 44W this season is sufficient given that most teams should be mostly
+focusing on cycling their match loads.
+
+*ISO VIEW*
+The overall drivetrain is 15.5" long and 13.5" wide.
+It uses 2.75" wheels with 600 RPM motors to create a 450 RPM ratio.
+This ratio is a very acceleration heavy ratio designed to make our cycle times faster.
+There will be very little times where we reach top speed on this field.
+
+*TOP VIEW*
+Each side has 3 wheels with intentional space left to place the main cross brace. 
+There are three braces to hold this drivetrain together, a main cross brace and two intermediate braces that only bind the two inner c-channels together.
+Because this drive is only 5 holes wide, a singular cross brace is enough to maintain structural integrity, and the intermidate braces are good enough to prevent bowing.
+
+*SCREW JOINT DIAGRAM*
+Screw joints were used to lower friction as shown. Screw joints has less slop than shafts and we want to use them almost everywhere (when feasible).
+We used brass inserts, as they have the lowest amount of slop and friction when spinning on the screws.
+The screw is mounted a cantilever to the inner c-channel and then supported by the mounted bearing flat on the outer c-channel.

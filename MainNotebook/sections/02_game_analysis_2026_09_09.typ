@@ -30,7 +30,7 @@
   caption: [#caption],
 )
 
-#let rule-card(title, rule, meaning, design-impact) = block(
+#let rule-card(title, rule, implication) = block(
   fill: rgb("#151724"),
   stroke: (left: 2.5pt + rgb("#60A5FA")),
   inset: (x: 12pt, y: 9pt),
@@ -40,9 +40,7 @@
     *#title* \
     #text(size: 9pt, fill: rgb("#94A3B8"), style: "italic")[#rule]
 
-    *What it means:* #meaning
-
-    *Design impact:* #design-impact
+    *What this means for the robot:* #implication
   ],
 )
 
@@ -51,7 +49,7 @@
 #v(6pt)
 #edp-header("IDENTIFY", "Pinnacle: Field Layout, Objects, and Rule Boundaries")
 
-The v1.2 manual sets Pinnacle on a 12' x 12' field where robots collect cups and pins, stack them on goals, and turn rollers to change some object values. Scoring is only part of the problem. The robot also has to cross five zones, keep its payload legal, and save time for parking.
+The v1.2 manual puts Pinnacle on a 12' x 12' field with cups, pins, goals, loaders, and rollers. We cannot design around scoring alone. The robot also has to cross five zones, carry a legal payload, and leave enough time to park.
 
 #figure(
   rounded-image(image-dir + "field-layout.png"),
@@ -72,7 +70,7 @@ The v1.2 manual sets Pinnacle on a 12' x 12' field where robots collect cups and
 - *Rollers:* Four perimeter structures that show red, blue, or yellow toward the field.
 - *Tape lines:* The manual places each tape line fully on the tile closer to the center of the field.
 
-The field has long alliance areas and three neutral sections, so our route changes depending on where the next object sits. Alliance goals give us the most predictable color routes. Neutral goals invite traffic, while the center goal pays more but takes longer to reach and score.
+The field gives us long alliance areas and three neutral sections, so the route will change with the next object. Alliance goals look easier to plan around because their color value is predictable. Neutral goals will bring more traffic. The center goal pays more, but it will take longer to reach and score.
 #pagebreak()
 == Object Supply & Starting Locations
 
@@ -188,7 +186,7 @@ The field has long alliance areas and three neutral sections, so our route chang
   [Parked robot], [Alliance match only; robot touching an alliance loader at the end, max one robot per loader], [21],
 )
 
-Pins count only when nested in a goal or a scored cup. Cups count only when nested on scored pins. A zero-point pin can still support a scored cup, so nesting order matters even when the pin color does not score.
+Pins only count when nested in a goal or a scored cup. Cups only count when nested on scored pins. A zero-point pin can still support a scored cup, so the order of the stack matters even when the pin itself scores nothing.
 
 #pagebreak()
 
@@ -197,78 +195,67 @@ Pins count only when nested in a goal or a scored cup. Cups count only when nest
 #rule-card(
   "3.2.2 to 3.2.3: Starting size and preload",
   "The robot starts inside an 18\" x 18\" x 18\" volume, touches one of the two red loaders in solo matches, and begins with one yellow/red preload pin.",
-  "The first mechanism state must fit inside the cube and present the preload without touching another object.",
-  "Keep the intake and lift inside the starting envelope. Measure the assembled robot, not only the CAD box.",
+  "The first mechanism state must fit inside the cube and present the preload without touching another object. We need to keep the intake and lift inside that envelope and measure the assembled robot, not only the CAD box.",
 )
 
 #rule-card(
   "3.3.1: Timer control",
   "Solo matches last 60 seconds. The robot cannot move before the timer starts and must stop at zero; late points are removed and the team receives a foul.",
-  "The final cycle only matters if the robot finishes before the buzzer.",
-  "Use a visible timer during testing. Leave a recovery margin instead of planning for the exact last second.",
+  "The final cycle only matters if the robot finishes before the buzzer. We should use a visible timer during testing and leave a recovery margin instead of planning for the exact last second.",
 )
 
 #rule-card(
   "3.3.2: Possession limit",
   "A robot may carry one unstacked pin, one unstacked cup, and one stack of any height at a time.",
-  "Bulk storage is not legal. The robot can carry one of each category, but a second stack or loose object risks a foul.",
-  "Build around grab, place, release, and return cycles. The robot must not trap a second cup by accident.",
+  "Bulk storage is not legal. The robot should use grab, place, release, and return cycles without trapping a second cup by accident.",
 )
 
 #rule-card(
   "3.3.3: Objects stay in play",
   "Removing a cup or pin from the field is a foul. Objects that leave the field are returned by field volunteers when it is safe to do so.",
-  "Hard pushing has a cost. A failed descore or uncontrolled intake can waste time and draw a penalty.",
-  "Use soft stops, controlled roller speeds, and a driver cue near the perimeter.",
+  "Hard pushing has a cost. The intake and descore mechanisms need soft stops, controlled roller speeds, and a driver cue near the perimeter.",
 )
 
 #rule-card(
   "3.3.4: Team-loaded objects",
   "Only objects that begin in a team's driver-box supply can be moved into its adjacent loaders during a match. A loader holds one object at a time, and the human must release it before robot contact.",
-  "Loader work is a handoff, not an extension of the robot. The driver and loader operator must stay synchronized.",
-  "Keep the opening visible and tune the intake for one clean handoff.",
+  "Loader work is a handoff, not an extension of the robot. The driver and loader operator need to stay synchronized, and the intake needs one clear, forgiving handoff.",
 )
 
 #rule-card(
   "4.1.1: Solo coding",
   "Solo coding matches last 60 seconds and the controller cannot be used to operate the robot.",
-  "The autonomous routine must handle timing, field error, and object variation without driver correction.",
-  "Use sensors and short recovery routines. A shorter route with a fallback is better than a longer route that fails once.",
+  "The autonomous routine must handle timing, field error, and object variation without driver correction. Sensors and short recovery routines matter more than a longer route that fails once.",
 )
 
 #rule-card(
   "5.3.1 to 5.3.3: Alliance autonomous",
   "Alliance matches begin with a 15-second autonomous period. Robots may work in their own alliance zone and the neutral zone, but cannot contact anything on the opponent's side of the neutral zone. Controllers cannot drive during this period.",
-  "Autonomous paths must stop at the correct boundary. A foul during autonomous costs the alliance its autonomous ranking point.",
-  "Mark the neutral-zone boundary in code and test the red and blue paths separately. The field edge is a rule boundary.",
+  "Autonomous paths must stop at the correct boundary. A foul costs the alliance its autonomous ranking point, so we need to mark the neutral-zone boundary in code and test both sides of the field.",
 )
 
 #rule-card(
   "5.3.4: Neutral-goal protection",
   "During the first 90 seconds, a robot may remove only one top pin, cup, or pinnacle at a time from a neutral-zone goal. During the final 30 seconds, objects may not be removed from neutral goals.",
-  "The match changes near the end. Neutral-goal descoring closes, so late cycles should build or protect instead of pulling.",
-  "The descore tool needs a one-object top-of-stack action. Add a timer lockout for the final 30 seconds.",
+  "Neutral-goal descoring closes near the end of the match. The descore tool needs a one-object top-of-stack action and a timer lockout for the final 30 seconds.",
 )
 
 #rule-card(
   "5.3.5: Opponent alliance goals",
   "An alliance cannot add or remove nested pins or cups from the opponent's alliance-colored zone.",
-  "Opponent goals are not legal defensive targets.",
-  "Route through the center and neutral areas without brushing those goals. Driver practice needs a hard no-go boundary.",
+  "Opponent goals are not legal defensive targets. Routes through the center and neutral areas need a hard no-go boundary during driver practice.",
 )
 
 #rule-card(
   "5.3.6 to 5.3.7: Defense and game objects",
   "A robot may not trap, hold, or lift an opponent for more than a four-count. Cups, pins, stacks, and field parts cannot be used to break another rule; knocking down a protected opposing stack can earn a red card.",
-  "A legal defensive position still needs an exit path. A stack remains part of the interaction while the robot touches it.",
-  "Use lane blocking and short contact instead of long pushes. Do not use a carried object as a battering ram.",
+  "A legal defensive position still needs an exit path. We should use lane blocking and short contact instead of long pushes, and never use a carried object as a battering ram.",
 )
 
 #rule-card(
   "5.1.5 and 5.5: Endgame value",
   "A robot touching one of its alliance's loaders at the end earns 21 points, with at most one robot counted per loader. The alliance ranking points require a 5-alliance-halfpin stack, a matching roller, and a robot on a loader.",
-  "The endgame needs a plan, not a last-second parking guess.",
-  "Reserve a route to a loader and set the time to stop risky cycles. Include the 21-point park and the endgame ranking point.",
+  "The endgame needs a plan. We should reserve a route to a loader, set a time to stop risky cycles, and include both the 21-point park and the endgame ranking point.",
 )
 
 #text(size: 9pt, fill: rgb("#94A3B8"))[
